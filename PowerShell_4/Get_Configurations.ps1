@@ -15,6 +15,7 @@ limitations under the License.
 
 #--------------------------------------------------------------------------------------
 # Example Powershell script for GETting your list of Configurations from the Skytap API.
+# Requires PowerShell 4.0 or greater.  Powershell 3.0 and early had a bug and would not permit Accept Headers
 #>
 
 #Skytap credentials 
