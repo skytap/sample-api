@@ -1,11 +1,6 @@
 #!/usr/bin/env python
 
-import csv
-import sys
-import json
-import requests  # can be installed via pip
-
-'''
+"""
  Copyright 2014 Skytap Inc.
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,19 +15,25 @@ import requests  # can be installed via pip
  See the License for the specific language governing permissions and
  limitations under the License.
 
- -----------------------------------------------------------------------
+-----------------------------------------------------------------------
 
- Example python script for performing a bulk creation of users in Skytap.
- Expects input of a csv file with specific fields for user and quota information.
- Requires Adminstrator (or User Manager) credentials in Skytap.
- Prompts user for all inputs values.
+ import_users_from_csv.py
 
- Tested with Python 3.4.1  (not compatible with Python 2)
+Example python script for performing a bulk creation of users in Skytap.
+Expects input of a csv file with specific fields for user and quota information.
+Requires Adminstrator (or User Manager) credentials in Skytap.
+Prompts user for all inputs values.
 
- v1.2
+Tested with Python 3.4.1  (not compatible with Python 2)
+v1.2
 
-''' 
- 
+"""
+
+import csv
+import sys
+import json
+import requests  # can be installed via pip
+
 # get username, API Token/password, and csv filename from user input
 userid = input('\nPlease enter your Skytap ADMINISTRATOR login: ')
 passwd = input('Please enter your Skytap API Token or password: ')

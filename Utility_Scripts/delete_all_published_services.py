@@ -1,19 +1,34 @@
 #!/usr/bin/env python
 
 """
+ Copyright 2014 Skytap Inc.
 
-    delete_all_published_services.py
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
 
-    Sample script using Skytap API. From global list of users, compiles a list of Skytap Configurations and
-    then deletes ALL Published Services for each Configuration.
+    http://www.apache.org/licenses/LICENSE-2.0
 
-    When completed, provides a summary of the number (if any) of Published Services deleted for each user.  The user 
-    is listed by email address - script may be modified to email admin of the Published Service security violation.
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
 
-    Note:  Requires Skytap Admin API login to obtain the list of all users
+-----------------------------------------------------------------------
 
-    tested with python v3.4.1
-    last updated 9/8/2014, FP
+ delete_all_published_services.py
+
+Sample script using Skytap API. From global list of users, compiles a list of Skytap Configurations and
+then deletes ALL Published Services for each Configuration.
+
+When completed, provides a summary of the number (if any) of Published Services deleted for each user.  The user
+is listed by email address - script may be modified to email admin of the Published Service security violation.
+
+Note:  Requires Skytap Admin API login to obtain the list of all users
+
+Tested with Python 3.4.1  (not compatible with Python 2)
+v1.0
 
 """
 

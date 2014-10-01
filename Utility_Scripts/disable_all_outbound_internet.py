@@ -1,19 +1,35 @@
 #!/usr/bin/env python
 
 """
-    disable_all_outbound_internet.py
+ Copyright 2014 Skytap Inc.
 
-    Sample script using Skytap API. From global list of Skytap Users, compiles a list of Skytap configurations
-    and disables outbound Internet Access for ALL Configurations in an account.
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
 
-    When completed, provides a summary of the number (if any) of Configurations which had outbound Internet Access
-    enabled (presumably) by a user.  The user is listed by email address - script may be modified to email
-    administrator of the Published Service security violation.
+   http://www.apache.org/licenses/LICENSE-2.0
 
-    Note:  Requires Skytap Admin API login to obtain the list of all users
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
 
-    tested with python v3.4.1
-    last updated 9/16/2014, FP
+-----------------------------------------------------------------------
+
+ disable_all_outbound_internet.py
+
+Sample script using Skytap API. From global list of Skytap Users, compiles a list of Skytap configurations
+and disables outbound Internet Access for ALL Configurations in an account.
+
+When completed, provides a summary of the number (if any) of Configurations which had outbound Internet Access
+enabled (presumably) by a user.  The user is listed by email address - script may be modified to email
+administrator of the Published Service security violation.
+
+Note:  Requires Skytap Admin API login to obtain the list of all users
+
+Tested with Python 3.4.1  (not compatible with Python 2)
+v1.0
 
 """
 
@@ -52,7 +68,7 @@ for user in user_list_json:
         config_details_json = json.loads(resp.text)
         if config_details_json["disable_internet"] == 0:
             internet_access_enabled_violation_found += 1
-            params = {"disable_internet": "true" }
+            params = {"disable_internet": "true"}
             resp = requests.put(config["url"], auth=user_credentials, headers=headers, params=params)
             logging.info("For Configuration ID: " + config_details_json["id"] + ", response from PUT to API to disable "
                          + "outbound Internet: " + str(resp.status_code))
