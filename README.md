@@ -1,4 +1,4 @@
 sample-api
 ==========
 
-Sample Python Code using the Skytap API.
+Repository of example scripts exercising basic functionality of the Skytap REST API. 
