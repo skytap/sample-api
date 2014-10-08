@@ -24,6 +24,9 @@ Expects input of a csv file with specific fields for user and quota information.
 Requires Adminstrator (or User Manager) credentials in Skytap.
 Prompts user for all inputs values.
 
+NOTE: Throughout the Skytap API, environments are referred to as "configurations." Skytap no longer uses the term
+      "configurations" in the web interface; however, it has been maintained in the API for backwards-compatibility.
+
 Tested with Python 3.4.1  (not compatible with Python 2)
 v1.2
 

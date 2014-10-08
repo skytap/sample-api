@@ -20,13 +20,15 @@
  disable_all_outbound_internet.py
 
 Sample script using Skytap API. From global list of Skytap Users, compiles a list of Skytap configurations
-and disables outbound Internet Access for ALL Configurations in an account.
+and disables outbound Internet Access for ALL Configurations in an account. Requires Skytap Admin API login to
+obtain the list of all users.
 
 When completed, provides a summary of the number (if any) of Configurations which had outbound Internet Access
 enabled (presumably) by a user.  The user is listed by email address - script may be modified to email
 administrator of the Published Service security violation.
 
-Note:  Requires Skytap Admin API login to obtain the list of all users
+NOTE: Throughout the Skytap API, environments are referred to as "configurations." Skytap no longer uses the term
+      "configurations" in the web interface; however, it has been maintained in the API for backwards-compatibility.
 
 Tested with Python 3.4.1  (not compatible with Python 2)
 v1.0
