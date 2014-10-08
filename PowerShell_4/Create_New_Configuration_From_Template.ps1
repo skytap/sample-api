@@ -15,6 +15,9 @@ limitations under the License.
 
 #-----------------------------------------------------------------------
 # Example Powershell script for Creating a new Configuration from Template using the Skytap API.
+# NOTE:  Throughout the Skytap API, environments are referred to as "configurations." Skytap no longer 
+#        uses the term "configurations" in the web interface; however, it has been maintained in the API 
+#        for backwards-compatibility.
 # Requires PowerShell 4.0 or greater.  Powershell 3.0 and early had a bug and would not permit Accept Headers
 #>
 
@@ -25,12 +28,12 @@ $password = <your_login_or_API_Token>
 #convert username:password for basic Authentication with Skytap API
 $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username,$password)))
 
-#set base URI for the Skytap resource you are accessing.  In this example, Configurations.
+#set base URI for the Skytap resource you are accessing.  In this example, Configurations/Environments.
 $uri = "https://cloud.skytap.com/configurations"
 
 #set requisite headers for Skytap API (JSON preferred, could use xml as well)
 $headers = @{"Accept" = "application/json"; Authorization=("Basic {0}" -f $base64AuthInfo)}
 
 #external template.json file specifies from which Template to create new config - edit this use your desired Template_ID
-#Make the API Call to POST Template ID to Configurations resource (to Create new config from Template)
+#Make the API Call to POST Template ID to Configurations resource (to Create new Environment from Template)
 Invoke-RestMethod -Uri $uri -Method POST -Body (Get-Content template.json -Raw) -ContentType "application/json" -Headers $headers
