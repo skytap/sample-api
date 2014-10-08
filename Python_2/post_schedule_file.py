@@ -18,14 +18,15 @@ limitations under the License.
 #------------------------------------------------------------------------
 
 A Python script to POST of a json file to the Skytap API
-to add a new schedule to an existing configuration.
+to add a new schedule to an existing Configuration/Environment.
 This is a very simple python script to serve as an example
 for beginner to get started making API calls to Skytap.
 
-This code was tested with python 2.7.5
+NOTE: Throughout the Skytap API, environments are referred to as "configurations."
+      Skytap no longer uses the term "configurations" in the web interface; however,
+      it has been maintained in the API for backwards-compatibility.
 
-Note: requires the requests python module which is
-open source (Apache2 licensed) and can be installed via Pip
+This code was tested with python 2.7.5
 '''
 
 import requests
@@ -42,11 +43,9 @@ json_file = open('new_schedule.json', 'r')      #open the file new_schedule.json
 
 ## POST and print the results ##
 result = requests.post(url, headers=headers, auth=auth, data=json_file)
-print
-print "status_code = %s" % result.status_code
-print
+print("status_code = %s" % result.status_code)
 json_out = json.loads(result.text)
-print json.dumps(json_out, indent=5)
+print(json.dumps(json_out, indent=5))
 
 
 

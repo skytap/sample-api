@@ -17,15 +17,17 @@ limitations under the License.
 
 #------------------------------------------------------------------------
 Python script to HTTP PUT to the Skytap API to start up a specific
-VM in a an existing configuration, which is done by changing the
+VM in a an existing Configuration/Environment, which is done by changing the
 runstate to running (by PUTting a change to the VM resource).
 This is a very simple python script to serve as an example
 for beginner to get started making API calls to Skytap.
 
+NOTE: Throughout the Skytap API, environments are referred to as "configurations."
+      Skytap no longer uses the term "configurations" in the web interface; however,
+      it has been maintained in the API for backwards-compatibility.
+
 This code was tested with python 2.7.5
 
-Note: requires the requests python module which is
-open source (Apache2 licensed) and can be installed via Pip
 '''
 
 import requests
@@ -44,11 +46,8 @@ params = {'runstate' : 'running'}
 
 ## PUT and print the results ##
 result = requests.put(url, headers=headers, auth=auth, params=params)
-print
-print "status_code = %s" % result.status_code
-print
+print("status_code = %s" % result.status_code)
 # next two lines make the json response pretty
 json_output = json.loads(result.text)
-print json.dumps(json_output, indent = 4)
-
+print(json.dumps(json_output, indent = 4))
 # Note: the VM resource will be in a busy, locked state until the VM is started #

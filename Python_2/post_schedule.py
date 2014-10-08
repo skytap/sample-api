@@ -17,14 +17,15 @@ limitations under the License.
 
 #-----------------------------------------------------------------------
 A python script to run a  HTTP POST command to the Skytap API
-to add a new schedule to an existing configuration, outputs json.
+to add a new schedule to an existing Configuration/Environment, outputs json.
 This is a very simple python script to serve as an example
 for beginner to get started making API calls to Skytap.
 
-This code was tested with python 2.7.5
+NOTE: Throughout the Skytap API, environments are referred to as "configurations."
+      Skytap no longer uses the term "configurations" in the web interface; however,
+      it has been maintained in the API for backwards-compatibility.
 
-Note: requires the requests python module which is
-open source (Apache2 licensed) and can be installed via Pip
+This code was tested with python 2.7.5
 '''
 
 import requests
@@ -53,9 +54,7 @@ schedule = [ ('title', ("New Schedule created via API")),
 
 ## POST and print the results ##
 result = requests.post(url, headers=headers, auth=auth, params=schedule)
-print
-print "status_code = %s" % result.status_code
-print
+print("status_code = %s" % result.status_code)
 # next two lines make the json response pretty
 json_output = json.loads(result.text)
 print json.dumps(json_output, indent = 4)
