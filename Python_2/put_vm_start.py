@@ -33,21 +33,25 @@ This code was tested with python 2.7.5
 import requests
 import json
 
-## define the requesite headers and authorization for the Skytap API ##
-auth = ( 'username', 'password' )               #login and password/API Token
-headers = {                                      #requesite json headers for API
-           'Accept' : 'application/json',
-           'Content-Type' : 'application/json'
+# Define the requesite headers and authorization for the Skytap API
+auth = ('username', 'password')      # login and API token/password
+# Requisite JSON headers for API
+headers = {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
 }
 
-## URL below PUTs a change to the VM ID 1234567 to start it up ##
-url = 'https://cloud.skytap.com/vms/1234567'
-params = {'runstate' : 'running'}
+# URL below PUTs a change to the VM ID 1234567 to start it up
+# VM ID 1234567 is contained in the Environment with ID 1234321
+url = 'https://cloud.skytap.com/configurations/1234321/vms/1234567'
+params = {'runstate': 'running'}
 
-## PUT and print the results ##
+# PUT and print the results
 result = requests.put(url, headers=headers, auth=auth, params=params)
 print("status_code = %s" % result.status_code)
-# next two lines make the json response pretty
+
+# Next two lines make the json response pretty
 json_output = json.loads(result.text)
-print(json.dumps(json_output, indent = 4))
-# Note: the VM resource will be in a busy, locked state until the VM is started #
+print(json.dumps(json_output, indent=4))
+
+# Note: the VM resource will be in a busy, locked state until the VM is started
