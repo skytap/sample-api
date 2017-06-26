@@ -20,6 +20,9 @@ limitations under the License.
 # Requires PowerShell 4.0 or greater.  Powershell 3.0 and early had a bug and would not permit Accept Headers
 #>
 
+# Use TLS 1.2 rather than PowerShell default of 1.0
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
 #Skytap credentials 
 $username = <your_skytap_login_id>
 $password = <your_login_or_API_Token>
